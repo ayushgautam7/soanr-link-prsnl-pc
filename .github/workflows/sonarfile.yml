@@ -1,31 +1,31 @@
-on:
-  # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request. 
-  push:
-    branches:
-      '*'
-  pull_request:
-      types: [opened, synchronize, reopened]
+# on:
+#   # Trigger analysis when pushing in master or pull requests, and when creating
+#   # a pull request. 
+#   push:
+#     branches:
+#       '*'
+#   pull_request:
+#       types: [opened, synchronize, reopened]
 
-name: SonarQube file
-jobs:
-  sonarqube:
-     runs-on: ubuntu-latest
+# name: SonarQube file
+# jobs:
+#   sonarqube:
+#      runs-on: ubuntu-latest
 
-     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+#      steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
 
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '17'  # adjust Java version as per your project requirement
+#       - name: Set up JDK
+#         uses: actions/setup-java@v2
+#         with:
+#           java-version: '17'  # adjust Java version as per your project requirement
 
-      - name: Build with Maven
-        run: mvn clean verify #--file ./soanr-link-prsnl-pc/blob/main/productappv1/pom.xml
-      - name: SonarQube Scan
-        uses: kitabisa/sonarqube-action@v1.2.0
-        with:
-         host: https://dea3-2409-4089-aa9f-729d-9d43-24c-1c87-363b.ngrok-free.app 
-         login: 804817d09aa1beaee838cbb28aa74bf1ff5b26ea
-         projectKey: check
+#       - name: Build with Maven
+#         run: mvn clean verify #--file ./soanr-link-prsnl-pc/blob/main/productappv1/pom.xml
+#       - name: SonarQube Scan
+#         uses: kitabisa/sonarqube-action@v1.2.0
+#         with:
+#          host: https://dea3-2409-4089-aa9f-729d-9d43-24c-1c87-363b.ngrok-free.app 
+#          login: 804817d09aa1beaee838cbb28aa74bf1ff5b26ea
+#          projectKey: check
