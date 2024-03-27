@@ -1,0 +1,28 @@
+name: Build Java Gradle Project
+
+on:
+  push:
+    branches:
+      - main  # adjust this to your main branch name
+  pull_request:
+    branches:
+      - main  # adjust this to your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'  # adjust Java version as per your project requirement
+
+      - name: Grant execute permission for Gradlew
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build --no-daemon
